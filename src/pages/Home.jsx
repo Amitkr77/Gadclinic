@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../home/HeroSection';
+import GoogleReviews from '../home/GoogelReviews';
 
 const Home = () => {
   return (
@@ -53,7 +54,7 @@ const Home = () => {
       </section>
 
       {/* 3. Quick Info Bar */}
-      <section className="bg-blue-900 text-white py-12">
+      {/* <section className="bg-blue-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           <div>
             <h4 className="text-blue-300 uppercase text-xs font-bold tracking-widest mb-2">Location</h4>
@@ -68,7 +69,9 @@ const Home = () => {
             <p className="text-lg">9AM - 1PM & 4PM - 8PM [cite: 58]</p>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <GoogleReviews />
     </div>
   );
 };
