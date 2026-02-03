@@ -32,13 +32,13 @@ export const Slides = [
         </div>
         <div className="max-w-xl">
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900">Dr. Parvinder Singh Arora</h2>
-          <p className="text-blue-600 font-bold text-lg mt-1 uppercase">D.N.B Orthopaedics, MNAMS, M.B.B.S [cite: 3]</p>
+          <p className="text-blue-600 font-bold text-lg mt-1 uppercase">D.N.B Orthopaedics, MNAMS, M.B.B.S</p>
           <p className="mt-4 text-gray-700 leading-relaxed font-medium">
-            Former Clinical Fellow at Sant Parmanand Hospital[cite: 75]. Specialist in Knee & Hip Replacement with over 15 years of surgical excellence[cite: 21, 65, 74].
+            Former Clinical Fellow at Sant Parmanand Hospital. Specialist in Knee & Hip Replacement with over 15 years of surgical excellence.
           </p>
-          <Link to="/doctor_profiles" className="mt-6 inline-block text-blue-700 font-black border-b-4 border-blue-700 pb-1">
+          {/* <Link to="/doctor_profiles" className="mt-6 inline-block text-blue-700 font-black border-b-4 border-blue-700 pb-1">
             VIEW FULL RESUME
-          </Link>
+          </Link> */}
         </div>
       </div>
     )

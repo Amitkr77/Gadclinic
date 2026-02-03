@@ -25,9 +25,19 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Doctor Profile', path: '/doctor_profiles' },
-    { name: 'Treatments', path: '/treatments' },
+    { 
+      name: 'Treatments', 
+      path: '#',
+      dropdown: [
+        { name: 'Knee Replacement', path: '/treatments/knee-replacement' },
+        { name: 'Fracture', path: '/treatments/fracture' },
+        { name: 'Joint Pain', path: '/treatments/joint-pain' },
+      ]
+    },
     { name: 'Contact Us', path: '/contact' },
   ];
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <header className={`w-full bg-white fixed top-0 z-50 shadow-sm transition-transform duration-300 ${
@@ -87,7 +97,7 @@ const Navbar = () => {
       {/* Lower Section: Navigation Links and Button */}
       <div className="bg-blue-900">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-14">
-          <div className="flex space-x-8">
+          {/* <div className="flex space-x-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}
@@ -101,7 +111,46 @@ const Navbar = () => {
                 {link.name}
               </NavLink>
             ))}
-          </div>
+          </div> */}
+
+
+          <div className="flex space-x-8">
+  {navLinks.map((link) => (
+    <div 
+      key={link.name} 
+      className="relative group h-full flex items-center"
+      onMouseEnter={() => link.dropdown && setIsDropdownOpen(true)}
+      onMouseLeave={() => link.dropdown && setIsDropdownOpen(false)}
+    >
+      <NavLink
+        to={link.path}
+        className={({ isActive }) =>
+          `text-sm font-bold uppercase tracking-wider transition-colors duration-200 py-4 ${
+            isActive ? 'text-white border-b-2 border-white' : 'text-blue-100 hover:text-white'
+          }`
+        }
+      >
+        {link.name}
+      </NavLink>
+
+      {/* Dropdown Menu */}
+      {link.dropdown && isDropdownOpen && (
+        <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-b-lg py-2 z-[60] border-t-4 border-blue-700">
+          {link.dropdown.map((subLink) => (
+            <Link
+              key={subLink.name}
+              to={subLink.path}
+              className="block px-6 py-3 text-blue-900 font-bold text-xs uppercase tracking-widest hover:bg-blue-50 hover:text-blue-600 transition-colors"
+              onClick={() => setIsDropdownOpen(false)} // Close when clicked
+            >
+              {subLink.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
+</div>
 
           <Link
             to="/book-appointment"
