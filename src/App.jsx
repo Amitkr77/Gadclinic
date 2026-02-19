@@ -36,8 +36,7 @@ const router = createBrowserRouter(
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
 
-      <Route path="privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="terms-of-service" element={<TermsOfService />} />
+   
       <Route path="*" element={<div className="pt-32 md:pt-40 pb-20 text-center text-3xl font-bold">404 - Page Not Found</div>} />
       </Route>
 
