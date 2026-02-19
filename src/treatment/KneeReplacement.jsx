@@ -10,8 +10,9 @@ const KneeReplacement = () => {
     "Personalized post-op rehab plan"
   ];
 
+
   return (
-    <div className="bg-white pt-32 md:pt-40 pb-20">
+    <div className="bg-white pt-32 md:pt-55 pb-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
