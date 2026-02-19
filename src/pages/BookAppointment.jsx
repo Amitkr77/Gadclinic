@@ -19,7 +19,7 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-40 pb-20 px-6">
+    <div className="min-h-screen bg-slate-50 pt-32 md:pt-60 pb-20 px-6">
       <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
         
         {/* Left Side: Information */}

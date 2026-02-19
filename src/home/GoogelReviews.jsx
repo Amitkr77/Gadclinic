@@ -1,66 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
-
-const GOOGLE_API_KEY = "YOUR_ACTUAL_API_KEY_HERE";
-const PLACE_ID = "ChIJkVTMdj8FDTkRkuNAfxus_z8";
+import { staticReviews } from '../data/staticReviews';
 
 const GoogleReviews = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const controls = useAnimation();
+
+  // This function handles the infinite loop movement
+  const startAnimation = async () => {
+    await controls.start({
+      x: ["0%", "-50%"],
+      transition: {
+        ease: "linear",
+        duration: 60,
+        repeat: Infinity,
+      },
+    });
+  };
 
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        // We use a proxy or the direct Google Maps URL (Note: CORS might require a proxy in dev)
-        const response = await fetch(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews&key=${GOOGLE_API_KEY}`
-        );
-        const data = await response.json();
-        if (data.result && data.result.reviews) {
-          setReviews(data.result.reviews);
-        }
-      } catch (error) {
-        console.error("Error fetching Google reviews:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchReviews();
+    startAnimation();
   }, []);
 
-  if (loading) return <div className="py-20 text-center">Loading Patient Feedback...</div>;
-
   return (
-    <section className="py-16 bg-white overflow-hidden border-t">
-      <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <h2 className="text-3xl font-black text-blue-900 uppercase">Real Patient Stories</h2>
-        <div className="flex justify-center gap-1 mt-2">
-           {[...Array(5)].map((_, i) => <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />)}
-           <span className="ml-2 font-bold text-gray-700">4.9/5 on Google</span>
-        </div>
+    <section className="py-20 bg-slate-50 overflow-hidden border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <h2 className="text-3xl md:text-5xl font-black text-blue-900 uppercase tracking-tighter">
+          Real <span className="text-red-600">Patient</span> Stories
+        </h2>
+        {/* <p className="text-gray-500 mt-2 font-medium italic">Hover to pause the scroll</p> */}
       </div>
 
-      <div className="relative flex">
+      <div 
+        className="relative flex cursor-pointer"
+        onMouseEnter={() => controls.stop()}
+        onMouseLeave={() => startAnimation()}
+      >
         <motion.div
           className="flex whitespace-nowrap"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+          animate={controls}
         >
-          {/* Loop through real reviews twice for seamless scroll */}
-          {[...reviews, ...reviews].map((review, index) => (
-            <div key={index} className="flex-shrink-0 w-[400px] bg-slate-50 p-8 rounded-3xl mx-4 border border-slate-100">
-              <div className="flex items-center gap-4 mb-4">
-                <img src={review.profile_photo_url} alt={review.author_name} className="w-12 h-12 rounded-full" />
-                <div>
-                  <h4 className="font-bold text-blue-900">{review.author_name}</h4>
-                  <p className="text-xs text-gray-500">{review.relative_time_description}</p>
+          {[...staticReviews, ...staticReviews].map((review, index) => (
+            <div 
+              key={index} 
+              className="shrink-0 w-87.5 md:w-100 bg-white p-8 rounded-4xl mx-4 shadow-sm border border-slate-100 transition-all duration-300 hover:border-red-400 hover:scale-[1.02]"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-black text-lg">
+                  {review.initial}
                 </div>
+                <div>
+                  <h4 className="font-bold text-blue-900 leading-tight">{review.name}</h4>
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+                <Quote className="ml-auto text-blue-50 opacity-20" size={40} />
               </div>
-              <p className="text-gray-600 text-sm italic whitespace-normal leading-relaxed">
-                "{review.text.substring(0, 180)}..."
+              
+              <p className="text-gray-600 text-sm italic whitespace-normal leading-relaxed h-24">
+                "{review.text}"
               </p>
+              
+              <div className="mt-6 pt-6 border-t border-slate-50 flex items-center justify-between">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Verified Patient</span>
+                <span className="text-[10px] font-bold text-blue-600 italic">GAD Clinic</span>
+              </div>
             </div>
           ))}
         </motion.div>
