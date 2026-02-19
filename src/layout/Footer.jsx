@@ -4,17 +4,18 @@ import {
   Phone, Mail, MapPin, Facebook, 
   Instagram, Twitter, Linkedin, ChevronRight 
 } from 'lucide-react';
-import logo from '../assets/logo.jpeg';
+import gadlogo from '../assets/gadlogo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const treatments = [
-    { name: "Knee Replacement", path: "/treatments/knee" },
-    { name: "Hip Replacement", path: "/treatments/hip" },
-    { name: "Gynaecology", path: "/treatments/gynae" },
-    { name: "Infertility Treatment", path: "/treatments/infertility" },
-    { name: "Complex Trauma", path: "/treatments/trauma" },
+    { name: "Knee Replacement", path: "/treatments/knee-replacement" },
+    { name: "Fracture Management", path: "/treatments/fracture" },
+    { name: "Join Pain Relief", path: "/treatments/joint-pain" },
+    { name: "Infertility Care", path: "/treatments/infertility" },
+    { name: "IVF Specialist", path: "/treatments/ivf" },
+    { name: "Hip Replacement", path: "/treatments/hip-replacement" },
   ];
 
   const quickLinks = [
@@ -31,19 +32,33 @@ const Footer = () => {
         
         {/* Column 1: About & Social */}
         <div className="space-y-6">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="h-12 w-auto rounded bg-white p-1" />
+
+          {/* <Link to="/" className="flex items-center gap-3">
+            <img src={gadlogo} alt="GadLogo" className="h-12 w-auto rounded bg-white p-1" />
             <span className="text-white font-black text-xl tracking-tighter">GADCLINIC</span>
-          </Link>
+          </Link> */}
+
+        <Link to="/" className="flex items-center gap-4">
+  <img 
+    src={gadlogo} 
+    alt="GadLogo" 
+    className="h-20 w-auto object-contain scale-125" 
+  />
+  <span className="text-white font-black text-3xl tracking-tighter uppercase">
+    GADCLINIC
+  </span>
+</Link>
           <p className="text-sm leading-relaxed">
             Leading Orthopaedic, Gynaecology, and Infertility center in Delhi. 
             Dedicated to providing advanced surgical care and compassionate treatment.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
+            <a href="https://www.facebook.com/people/Parvinder-Singh/61587297596113/?rdid=OC7tLs9vJeCXIsdP&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AzuVv6uo2%2F"
+            className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
               <Facebook size={18} />
             </a>
-            <a href="#" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
+            <a href="https://www.instagram.com/dr.parvindersinghortho?utm_source=qr&igsh=MWFyejhzMXl6cGd5NA%3D%3D"
+            className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
               <Instagram size={18} />
             </a>
             <a href="#" className="p-2 bg-slate-800 rounded-full hover:bg-red-600 transition-colors">
@@ -106,12 +121,32 @@ const Footer = () => {
       <div className="border-t border-slate-800 bg-slate-950">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
           <p>© {currentYear} GAD Advanced Clinics. All Rights Reserved.</p>
+          {/* Add developed by Alomonox  */}
+          <div className="flex items-center gap-1 bg-slate-900/50 px-3 py-1 rounded-full border border-slate-800">
+            {/* <span>🚀</span> */}
+            <span className="ml-1">Developed by</span>
+            {/* <a 
+              href="https://alomonx.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-blue-400 hover:text-blue-300 font-bold transition-colors ml-1"
+            >
+              Alomonx
+            </a> */}
+            <p className="text-blue-400 hover:text-blue-300 font-bold transition-colors ml-1">Alomonx Technology Pvt Ltd</p>
+          </div>
+
+
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link>
           </div>
         </div>
       </div>
+
+      
+
+
     </footer>
   );
 };

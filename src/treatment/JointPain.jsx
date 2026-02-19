@@ -4,7 +4,7 @@ import { Thermometer, Wind, Move } from 'lucide-react';
 
 const JointPain = () => {
   return (
-    <div className="bg-slate-50 pt-32 md:pt-40 pb-20 min-h-screen">
+    <div className="bg-slate-50 pt-32 md:pt-55 pb-20 min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-black text-blue-900 mb-4 uppercase">Joint Pain Management</h1>

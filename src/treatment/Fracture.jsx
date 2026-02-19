@@ -6,7 +6,7 @@ import { ShieldAlert, Zap, Phone } from 'lucide-react';
 
 const Fracture = () => {
   return (
-    <div className="bg-white pt-32 md:pt-40 pb-20 ">
+    <div className="bg-white pt-32 md:pt-57 pb-20 ">
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-red-50 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1">

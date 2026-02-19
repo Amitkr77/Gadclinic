@@ -3,41 +3,53 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react'; 
 import { Slides } from './Slides';
 
+const variants = {
+  enter: (direction) => ({
+    x: direction > 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction < 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+};
+
 const HeroSection = () => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const slideIndex = Math.abs(page % Slides.length);
+  const imageIndex = Math.abs(page % Slides.length);
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
   };
 
+  // --- AUTO-PLAY LOGIC ---
   useEffect(() => {
-    const timer = setInterval(() => paginate(1), 6000);
-    return () => clearInterval(timer);
-  }, [page]);
+    // Only auto-play if the user is NOT hovering
+    if (!isHovered) {
+      const timer = setInterval(() => {
+        paginate(1);
+      }, 5000); // Changes every 5 seconds
 
-  // ANIMATION VARIANTS
-  const variants = {
-    enter: (direction) => ({
-      x: direction > 0 ? '100%' : '-100%',
-      opacity: 1,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? '100%' : '-100%',
-      opacity: 1,
-    }),
-  };
+      return () => clearInterval(timer);
+    }
+  }, [page, isHovered]); // Re-run when page changes or hover state changes
+
 
   return (
-    <div className="group relative h-162.5 md:h-187.5 w-full overflow-hidden bg-slate-900">
-      <AnimatePresence initial={false} custom={direction}>
+    <div 
+      className="relative min-h-screen w-full overflow-hidden bg-white"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
           key={page}
           custom={direction}
@@ -46,32 +58,49 @@ const HeroSection = () => {
           animate="center"
           exit="exit"
           transition={{
-            // Slow motion spring: low stiffness = smoother glide
-            x: { type: "spring", stiffness: 40, damping: 22 },
-            opacity: { duration: 0.5 }
+            x: { type: "spring", stiffness: 150, damping: 25, mass: 0.8 },
+            opacity: { duration: 0.4 }
           }}
-          className={`absolute inset-0 flex items-center justify-center ${Slides[slideIndex].bg}`}
+          className={`absolute w-full h-full ${Slides[imageIndex].bg}`}
         >
-          <div className="max-w-7xl mx-auto px-6 w-full text-center md:text-left">
-            {Slides[slideIndex].content}
-          </div>
+          {Slides[imageIndex].content}
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows - Hidden until hover, turn Red on hover */}
-      <div className="absolute inset-0 flex items-center justify-between px-6 z-20 pointer-events-none">
+      {/* Chevrons: Only visible on hover */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        className="absolute inset-0 flex items-center justify-between px-6 pointer-events-none z-50"
+      >
         <button
-          className="pointer-events-auto p-3 rounded-full transition-all duration-500 opacity-0 group-hover:opacity-100 text-white/30 hover:text-red-600"
+          className="pointer-events-auto p-4 bg-white/40 hover:bg-blue-900 hover:text-white rounded-full backdrop-blur-md transition-all shadow-xl group"
           onClick={() => paginate(-1)}
         >
-          <ChevronLeft className="w-12 h-12" />
+          <ChevronLeft className="text-blue-900 group-hover:text-white" size={36} />
         </button>
+
         <button
-          className="pointer-events-auto p-3 rounded-full transition-all duration-500 opacity-0 group-hover:opacity-100 text-white/30 hover:text-red-600"
+          className="pointer-events-auto p-4 bg-white/40 hover:bg-blue-900 hover:text-white rounded-full backdrop-blur-md transition-all shadow-xl group"
           onClick={() => paginate(1)}
         >
-          <ChevronRight className="w-12 h-12" />
+          <ChevronRight className="text-blue-900 group-hover:text-white" size={36} />
         </button>
+      </motion.div>
+
+      {/* Progress Dots */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50 flex gap-3">
+        {Slides.map((_, idx) => (
+          <motion.div
+            key={idx}
+            onClick={() => setPage([idx, idx > imageIndex ? 1 : -1])}
+            animate={{ 
+              width: idx === imageIndex ? 40 : 10,
+              backgroundColor: idx === imageIndex ? "#1e3a8a" : "rgba(30, 58, 138, 0.2)" 
+            }}
+            className="h-2.5 rounded-full cursor-pointer shadow-sm"
+          />
+        ))}
       </div>
     </div>
   );

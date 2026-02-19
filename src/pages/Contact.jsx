@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 
+// pt-32 md:pt-40
+
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-white pt-40 pb-20 px-6">
+    <div className="min-h-screen bg-white pt-32 md:pt-55 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">

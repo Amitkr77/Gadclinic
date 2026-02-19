@@ -1,138 +1,106 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Award, BookOpen, Briefcase } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { Award, Stethoscope, Baby, ArrowRight } from 'lucide-react';
+import Parvindar_photo from '../assets/Parvindar_photo.png';
+import Maam_photo from '../assets/Maam_photo.jpeg';
 
 const DoctorProfile = () => {
-  const doctorData = {
-    name: "Dr. Parvinder Singh Arora",
-    designation: "Consultant Orthopaedic & Joint Replacement Surgeon",
-    degrees: "MBBS, DNB (Ortho), MNAMS, FJR",
-    email: "dr.parvinder_4@yahoo.co.in",
-    phone: "+91 98711 89004",
-    location: "Janak Puri, New Delhi",
-    specialties: ["Knee Replacement", "Hip Replacement", "Complex Trauma", "Joint Pain Management"],
-    experience: "15+ Years",
-    summary: "Dr. Parvinder Singh Arora is a highly accomplished Orthopaedic Surgeon with over 15 years of experience. He has a specialized interest in Arthroplasty (Joint Replacement) and Arthroscopy, having performed over 200 successful joint replacements and hundreds of trauma cases.",
-    background: [
-      "Former Clinical Fellow in Joint Replacement at Sant Parmanand Hospital.",
-      "Trained at the prestigious Sir Ganga Ram Hospital, New Delhi.",
-      "Extensive experience as a Senior Resident at Safdarjung and GTB Hospitals."
-    ],
-    education: [
-      { degree: "Clinical Fellow (Joint Replacement)", institution: "Sant Parmanand Hospital, Delhi" },
-      { degree: "DNB (Orthopaedics)", institution: "Sir Ganga Ram Hospital, New Delhi" },
-      { degree: "M.B.B.S", institution: "Acharya Shri Chander College of Medical Sciences" }
-    ],
-    awards: [
-      "Presented Research at IOACON 2015 & ISKSAA 2016",
-      "Organized Advanced Knee Symposia at Sir Ganga Ram Hospital",
-      "Recognized for excellence in post-op patient care and feedback"
-    ]
-  };
+  const doctors = [
+    {
+      id: "parvinder-singh-arora",
+      name: "Dr. Parvinder Singh Arora",
+      title: "Orthopaedic & Joint Replacement Surgeon",
+      degrees: "MBBS, DNB (Ortho), MNAMS, FJR",
+      experience: "20+ Years",
+      icon: <Stethoscope className="text-blue-600" size={24} />,
+      photo: Parvindar_photo,
+      specialty: "Arthroplasty & Arthroscopy Specialist",
+      path: "/doctor-profile/parvinder"
+    },
+    {
+      id: "simrandeep-kaur",
+      name: "Dr. Simrandeep Kaur",
+      title: "Infertility, IVF & Endoscopic Surgeon",
+      degrees: "MBBS, MD (Obstetrics & Gynaecology)",
+      experience: "12+ Years",
+      icon: <Baby className="text-pink-500" size={24} />,
+      photo: Maam_photo,
+      specialty: "Expert in Women's Health & ART",
+      path: "/doctor-profile/simrandeep"
+    }
+  ];
+
+//  pt-32 md:pt-40
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-32 md:pt-40">
-      {/* Top Profile Header */}
-      <section className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col md:flex-row gap-10 items-center">
-          {/* Profile Image Placeholder */}
-          <div className="w-64 h-80 bg-slate-200 rounded-lg shadow-inner flex items-center justify-center overflow-hidden border">
-             <span className="text-slate-400 font-bold">Photo</span>
-          </div>
-
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl font-extrabold text-blue-900">{doctorData.name}</h1>
-            <p className="text-xl font-semibold text-blue-600 mt-2">{doctorData.degrees}</p>
-            <p className="text-lg text-gray-600 mt-1 font-medium italic">{doctorData.designation}</p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <div className="flex items-center gap-3 text-gray-700 justify-center md:justify-start">
-                <Briefcase className="w-5 h-5 text-blue-600" />
-                <span>{doctorData.experience} Experience</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-700 justify-center md:justify-start">
-                <MapPin className="w-5 h-5 text-blue-600" />
-                <span>{doctorData.location}</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-700 justify-center md:justify-start">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <span>{doctorData.phone}</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-700 justify-center md:justify-start">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <span className="text-sm">{doctorData.email}</span>
-              </div>
-            </div>
-
-            <button className="mt-8 bg-blue-600 text-white px-8 py-3 rounded-md font-bold hover:bg-blue-700 transition shadow-lg">
-              BOOK AN APPOINTMENT
-            </button>
-          </div>
+    <div className="bg-slate-50 min-h-screen pt-32 md:pt-60 pb-20 px-4">
+      <div className="max-w-5xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-black text-blue-900 uppercase tracking-tight">
+            Our Specialist Doctors
+          </h1>
+          <div className="w-24 h-1.5 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+          <p className="text-gray-600 mt-6 text-lg max-w-2xl mx-auto font-medium">
+            Meet our team of world-class experts dedicated to providing advanced 
+            Orthopaedic and Gynaecological care.
+          </p>
         </div>
-      </section>
 
-      {/* Main Content Sections */}
-      <section className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
-        
-        {/* Left Column: About & Experience */}
-        <div className="md:col-span-2 space-y-8">
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-            <h2 className="text-2xl font-bold text-blue-900 mb-4 border-l-4 border-blue-600 pl-4">About the Doctor</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">{doctorData.summary}</p>
-            <ul className="space-y-2">
-              {doctorData.background.map((item, i) => (
-                <li key={i} className="flex gap-2 text-gray-600 italic">
-                  <span>•</span> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-            <h2 className="text-2xl font-bold text-blue-900 mb-6 border-l-4 border-blue-600 pl-4">Education & Training</h2>
-            <div className="space-y-6">
-              {doctorData.education.map((edu, i) => (
-                <div key={i} className="flex gap-4">
-                  <BookOpen className="w-6 h-6 text-blue-600 shrink-0" />
-                  <div>
-                    <h4 className="font-bold text-gray-900">{edu.degree}</h4>
-                    <p className="text-gray-600">{edu.institution}</p>
-                  </div>
+        {/* Doctor Cards List - Changed to grid-cols-1 */}
+        <div className="grid grid-cols-1 gap-12"> 
+          {doctors.map((doc) => (
+            <div 
+              key={doc.id} 
+              className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition-all duration-500 border border-slate-100"
+            >
+              {/* Image Section */}
+              <div className="md:w-1/3 relative overflow-hidden h-72 md:h-auto">
+                <img 
+                  src={doc.photo} 
+                  alt={doc.name} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-2 shadow-sm">
+                  <Award size={16} className="text-blue-600" />
+                  <span className="text-[10px] font-black uppercase text-blue-900">{doc.experience} Exp</span>
                 </div>
-              ))}
+              </div>
+
+              {/* Content Section */}
+              <div className="md:w-2/3 p-8 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-blue-50 rounded-lg">{doc.icon}</div>
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">{doc.specialty}</span>
+                  </div>
+                  
+                  <h2 className="text-3xl font-black text-blue-900 mb-1 leading-tight group-hover:text-blue-700 transition-colors">
+                    {doc.name}
+                  </h2>
+                  <p className="text-blue-600 font-bold text-base mb-4 uppercase tracking-tighter">{doc.degrees}</p>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed mb-6">
+                    {doc.title}
+                  </p>
+                </div>
+
+                <NavLink 
+                  to={doc.path} 
+                  className="flex items-center justify-between group/link w-full border-t pt-6"
+                >
+                  <span className="text-blue-900 font-black text-sm uppercase tracking-widest group-hover/link:text-blue-600 transition-colors">
+                    View Full Profile
+                  </span>
+
+                  <div className="bg-blue-900 text-white p-2 rounded-full transition-transform group-hover/link:translate-x-2">
+                    <ArrowRight size={20} />
+                  </div>
+                </NavLink>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-
-        {/* Right Column: Specialization & Achievements */}
-        <div className="space-y-8">
-          <div className="bg-blue-900 text-white p-8 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Award className="w-6 h-6 text-yellow-400" /> Specializations
-            </h3>
-            <ul className="space-y-3">
-              {doctorData.specialties.map((spec, i) => (
-                <li key={i} className="flex items-center gap-3 bg-blue-800 p-3 rounded text-sm font-semibold">
-                  <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
-                  {spec}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-            <h3 className="text-xl font-bold text-blue-900 mb-6">Achievements</h3>
-            <ul className="space-y-4">
-              {doctorData.awards.map((award, i) => (
-                <li key={i} className="flex gap-3 text-sm text-gray-600 border-b pb-3 last:border-0">
-                  <span className="text-blue-600 font-bold">✔</span>
-                  {award}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-      </section>
+      </div>
     </div>
   );
 };
