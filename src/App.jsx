@@ -13,8 +13,7 @@ import Simrandeep from "./doctor/Simrandeep"
 import IVF from "./treatment/IVF"
 import HipReplcament from "./treatment/HipReplcament"
 import Infertility from "./treatment/Infertility"
-import PrivacyPolicy from "./conditon/PrivacyPolicy"
-import TermsOfService from "./conditon/TermsOfService"
+
 
 
 const router = createBrowserRouter(
