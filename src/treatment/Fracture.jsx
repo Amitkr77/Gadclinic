@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Zap, Phone } from 'lucide-react';
+import x_ray from '../assets/x_ray.jpeg';
 
-// pt-32 md:pt-40
 
 const Fracture = () => {
   return (
@@ -28,8 +28,9 @@ const Fracture = () => {
               <Phone size={20} /> CALL EMERGENCY
             </a>
           </div>
-          <div className="w-full md:w-1/3 bg-white rounded-2xl h-80 shadow-lg flex items-center justify-center">
-             <span className="text-red-200 font-bold">X-Ray Image Placeholder</span>
+          <div className="w-full md:w-1/3 bg-white rounded-2xl h-80 shadow-lg overflow-hidden flex items-center justify-center">
+            <img src={x_ray} alt="X-Ray Image" className="w-full h-full object-cover" />
+             {/* <span className="text-red-200 font-bold">X-Ray Image Placeholder</span> */}
           </div>
         </div>
       </div>

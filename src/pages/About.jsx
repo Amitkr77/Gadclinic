@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Heart, Users, Microscope, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Heart, Microscope, ShieldCheck } from 'lucide-react';
+import aboutPhoto from '../assets/aboutPhoto.jpeg';
 
 const About = () => {
   const stats = [
@@ -11,7 +13,6 @@ const About = () => {
   ];
 
 
-  //  pt-32 md:pt-40
   return (
     <div className="min-h-screen bg-white pt-32 md:pt-60 pb-20 overflow-hidden">
       {/* 1. Vision & Mission Section */}
@@ -27,16 +28,17 @@ const About = () => {
               Pioneering Advanced <br/>Medical Care in Delhi
             </h1>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Founded with a vision to provide world-class orthopaedic and gynaecological treatments, **GAD Clinic** has grown into a center of excellence in Janak Puri. 
+              Founded with a vision to provide world-class orthopaedic and gynaecological treatments, GAD Clinic has grown into a center of excellence in Janak Puri. 
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
-              We combine the precision of modern technology with the warmth of personalized care. Under the leadership of Dr. Parvinder Singh Arora, we focus on minimally invasive procedures that ensure faster recovery and long-term health.
+              We combine the precision of modern technology with the warmth of personalized care. Under the leadership of Dr. Parvinder Singh Arora and Dr. Simrandeep Kaur, we focus on minimally invasive procedures that ensure faster recovery and long-term health.
             </p>
           </motion.div>
 
           <div className="relative">
             <div className="aspect-square bg-blue-100 rounded-[4rem] overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-500">
                {/* Replace with a real clinic/team photo */}
+               <img src={aboutPhoto} alt="Clinic Team" className="w-full h-full object-cover" />
                <div className="w-full h-full flex items-center justify-center text-blue-200 font-bold">Clinic Environment Photo</div>
             </div>
             <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-3xl shadow-2xl border border-slate-100">
@@ -105,9 +107,11 @@ const About = () => {
             <p className="text-red-100 mb-10 max-w-xl mx-auto font-medium">
               Join thousands of satisfied patients who have found relief at GAD Clinic.
             </p>
-            <button className="bg-white text-red-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl">
+            <Link to='/doctor-profiles'>
+            <button className="bg-white text-red-600 px-10 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl cursor-pointer">
               Meet Our Doctors
             </button>
+            </Link>
           </div>
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full blur-3xl opacity-50 -mr-20 -mt-20"></div>
         </div>
