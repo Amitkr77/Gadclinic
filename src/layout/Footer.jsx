@@ -39,15 +39,15 @@ const Footer = () => {
           </Link> */}
 
         <Link to="/" className="flex items-center gap-4">
-  <img 
-    src={gadlogo} 
-    alt="GadLogo" 
-    className="h-20 w-auto object-contain scale-125" 
-  />
-  <span className="text-white font-black text-3xl tracking-tighter uppercase">
-    GADCLINIC
-  </span>
-</Link>
+          <img 
+            src={gadlogo} 
+            alt="GadLogo" 
+            className="h-20 w-auto object-contain scale-125" 
+          />
+          <span className="text-white font-black text-3xl tracking-tighter uppercase">
+            GADCLINIC
+          </span>
+        </Link>
           <p className="text-sm leading-relaxed">
             Leading Orthopaedic, Gynaecology, and Infertility center in Delhi. 
             Dedicated to providing advanced surgical care and compassionate treatment.

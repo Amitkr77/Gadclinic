@@ -184,7 +184,7 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-4 bg-white text-blue-900 text-center py-4 rounded-md font-black uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
           >
-            Book Appointment 📅
+            Book Appointment
           </Link>
         </div>
       </div>

@@ -112,8 +112,10 @@ const BookAppointment = () => {
               >
                 <option>Knee Replacement</option>
                 <option>Fracture Management</option>
-                <option>Joint Pain</option>
-                <option>Gynaecology / Infertility</option>
+                <option>Joint Pain Relief</option>
+                <option>Infertility</option>
+                <option>IVF Treatment</option>
+                <option>Hip Replacement</option>
               </select>
             </div>
 
