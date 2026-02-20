@@ -29,7 +29,7 @@ const KneeReplacement = () => {
               ))}
             </div>
           </motion.div>
-          <div className="rounded-3xl overflow-hidden shadow-2xl bg-blue-50 h-100 flex items-center justify-center relative">
+          <div className="rounded-3xl overflow-hidden shadow-2xl bg-blue-50 h-150 flex items-center justify-center relative">
             {/* Replace with actual image of Knee surgery/model */}
             <img src={Knee_replacement} alt="Knee Replacement" className="w-full h-full object-cover block" />
             <Activity size={100} className="text-blue-200 absolute opacity-50 pointer-events-none" />
