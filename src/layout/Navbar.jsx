@@ -51,7 +51,7 @@ const Navbar = () => {
       }`}>
       
       {/* Upper Section */}
-      <div className="max-w-7xl mx-auto px-4 py-4 flex flex-row justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4  flex flex-row justify-between items-center gap-4">
         <Link to="/" className="flex items-center gap-4 group">
           <img
             src={gadlogo}
