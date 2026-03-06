@@ -109,9 +109,9 @@ const Footer = () => {
               <Phone className="text-blue-500 shrink-0" size={20} />
               <span className="text-sm">+91 98711 89004</span>
             </a>
-            <a href="mailto:info@gadclinic.com" className="flex items-center gap-3 hover:text-red-500 transition-colors">
+            <a href="mailto:prvndr4@gmail.com" className="flex items-center gap-3 hover:text-red-500 transition-colors">
               <Mail className="text-blue-500 shrink-0" size={20} />
-              <span className="text-sm">info@gadclinic.com</span>
+              <span className="text-sm">prvndr4@gmail.com</span>
             </a>
           </div>
         </div>

@@ -11,7 +11,7 @@ const BookAppointment = () => {
     message: ''
   });
 
-  // import.meta.env.VITE_WHATSAPP_NUMBER;
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,8 +31,10 @@ const BookAppointment = () => {
     window.open(whatsappURL, '_blank');
     setFormData({
       name: '',
+      mobile: '',
+      countryCode: '+91',
       email: '',
-      subject: '',
+      service: 'Knee Replacement',
       message: ''
     });
 

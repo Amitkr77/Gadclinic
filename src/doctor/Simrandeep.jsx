@@ -8,7 +8,7 @@ const Simrandeep = () => {
     name: "Dr. Simrandeep Kaur",
     designation: "Consultant Infertility, IVF & Endoscopic Surgeon",
     degrees: "MBBS, MD (Obstetrics & Gynaecology)",
-    email: "info@gadclinic.com", 
+    email: "prvndr4@gmail.com", 
     phone: "+91 98711 89004",
     location: "Janak Puri, New Delhi",
     specialties: [
