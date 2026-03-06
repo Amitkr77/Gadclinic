@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 
-// pt-32 md:pt-40
-
 const Contact = () => {
+  // 1. State for Form Data
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  // 2. Handle Input Changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // 3. Handle WhatsApp Submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+    
+    const text = `*New Website Message*%0a` +
+                 `--------------------------%0a` +
+                 `*Name:* ${formData.name}%0a` +
+                 `*Email:* ${formData.email}%0a` +
+                 `*Subject:* ${formData.subject}%0a` +
+                 `*Message:* ${formData.message}`;
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${text}`;
+    
+    window.open(whatsappURL, '_blank');
+
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+
+    
+    alert("Opening WhatsApp... Thank you for reaching out!");
+  };
+
   return (
     <div className="min-h-screen bg-white pt-32 md:pt-55 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -41,12 +80,13 @@ const Contact = () => {
             {/* Google Maps Embed */}
             <div className="w-full h-80 rounded-3xl overflow-hidden shadow-inner grayscale hover:grayscale-0 transition-all duration-500 border border-slate-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.2618958220455!2d77.08745507540292!3d28.62190118456247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d043f76cccc91%3A0xfffccbb87f43e392!2sGAD%20ADVANCED%20ORTHO%20GYNAE%20%26%20INFERTILITY%20CLINICS!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src={import.meta.env.VITE_MAP_URL}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
+                title="Clinic Map"
               ></iframe>
             </div>
             
@@ -61,39 +101,65 @@ const Contact = () => {
           {/* Right: Message Form */}
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-100 relative overflow-hidden">
             <h2 className="text-2xl font-bold text-blue-900 mb-8">Send us a Message</h2>
-            <form className="space-y-6 relative z-10">
+            
+            {/* onSubmit and Linked state to inputs */}
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Name</label>
-                  <input type="text" className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" placeholder="Your Name" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" 
+                    placeholder="Your Name" 
+                  />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Email</label>
-                  <input type="email" className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" placeholder="example@email.com" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" 
+                    placeholder="example@email.com" 
+                  />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Subject</label>
-                <input type="text" className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" placeholder="Knee Surgery Inquiry" />
+                <input 
+                  type="text" 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" 
+                  placeholder="Knee Surgery Inquiry" 
+                />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Message</label>
-                <textarea rows="4" className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" placeholder="How can we help you?"></textarea>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="4" 
+                  className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-blue-600 transition-all" 
+                  placeholder="How can we help you?"
+                ></textarea>
               </div>
-              <button className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-95">
+              <button 
+                type="submit"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-95"
+              >
                 <Send size={18} />
-                SEND MESSAGE
+                SEND TO WHATSAPP
               </button>
             </form>
-            
-            {/* WhatsApp Floating Hint */}
-            <div className="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
-              <p className="text-sm text-gray-500">Need an urgent answer?</p>
-              <a href="https://wa.me/919871189004" className="flex items-center gap-2 text-green-600 font-bold hover:underline">
-                <MessageCircle size={20} />
-                WhatsApp Us
-              </a>
-            </div>
           </div>
         </div>
       </div>

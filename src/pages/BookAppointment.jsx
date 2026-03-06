@@ -11,11 +11,33 @@ const BookAppointment = () => {
     message: ''
   });
 
+  // import.meta.env.VITE_WHATSAPP_NUMBER;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send data to your backend or WhatsApp
-    console.log("Appointment Data:", formData);
-    alert("Thank you! Dr. Parvinder's team will contact you shortly.");
+
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+
+    const message = `*New Appointment Request*%0a` +
+                    `--------------------------%0a` +
+                    `*Name:* ${formData.name}%0a` +
+                    `*Phone:* ${formData.countryCode} ${formData.mobile}%0a` +
+                    `*Email:* ${formData.email}%0a` +
+                    `*Service:* ${formData.service}%0a` +
+                    `*Condition:* ${formData.message || 'Not specified'}`;
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(whatsappURL, '_blank');
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+
+    
+    alert("Opening WhatsApp... Thank you for reaching out!");
   };
 
   return (
@@ -134,7 +156,7 @@ const BookAppointment = () => {
               type="submit"
               className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl transition-all shadow-lg shadow-red-200 flex items-center justify-center gap-2"
             >
-              <Calendar size={18} />
+              {/* <Calendar size={18} /> */}
               CONFIRM APPOINTMENT
             </button>
 

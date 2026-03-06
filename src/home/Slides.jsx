@@ -24,7 +24,7 @@ export const Slides = [
               transition={{ duration: 0.6 }}
             >
               <h4 className="text-blue-600 font-black tracking-[0.2em] text-sm uppercase mb-2">
-                Orthopaedic Specialist
+                Orthopaedic Surgeon
               </h4>
               <h1 className="text-4xl md:text-6xl xl:text-7xl font-black text-blue-900 leading-[1.1] uppercase">
                 Dr. Parvinder <br className="hidden md:block"/> Singh Arora
