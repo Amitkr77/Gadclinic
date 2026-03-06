@@ -18,7 +18,7 @@ const Simrandeep = () => {
       "High-Risk Pregnancy Management",
       "PCOS & Ovarian Dysfunction"
     ],
-    experience: "12+ Years",
+    experience: "20+ Years",
     summary: "Dr. Simrandeep Kaur is a distinguished Gynaecologist, Infertility, and IVF specialist with over 12 years of clinical excellence. She excels in fertility-enhancing surgeries and has successfully treated a wide spectrum of infertility cases, including recurrent IVF failure and unexplained causes.",
     background: [
       "Gold Medalist in the Reproductive Medicine exit examination.",

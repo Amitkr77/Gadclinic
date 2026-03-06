@@ -20,7 +20,7 @@ const Home = () => {
      <section className="bg-[#05142b] py-16">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: "Years Of Experience", value: "20 +", icon: <Award size={32}/> },
+              { label: "Years Of Experience", value: "15 +", icon: <Award size={32}/> },
               { label: "Happy Patients", value: "1,000 +", icon: <Activity size={32}/> },
               { label: "Doctors and Staff", value: "50 +", icon: <Stethoscope size={32}/> },
               { label: "Clinic Room", value: "20 +", icon: <ShieldCheck size={32}/> }

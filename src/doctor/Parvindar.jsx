@@ -8,11 +8,11 @@ const Parvindar = () => {
     name: "Dr. Parvinder Singh Arora",
     designation: "Consultant Orthopaedic & Joint Replacement Surgeon",
     degrees: "MBBS, DNB (Ortho), MNAMS, FJR",
-    email: "dr.parvinder_4@yahoo.co.in",
+    email: "prvndr4@gmail.com",
     phone: "+91 98711 89004",
     location: "Janak Puri, New Delhi",
     specialties: ["Knee Replacement", "Hip Replacement", "Complex Trauma", "Joint Pain Management"],
-    experience: "20+ Years",
+    experience: "15+ Years",
     summary: "Dr. Parvinder Singh Arora is a highly accomplished Orthopaedic Surgeon with over 15 years of experience. He has a specialized interest in Arthroplasty (Joint Replacement) and Arthroscopy, having performed over 200 successful joint replacements and hundreds of trauma cases.",
     background: [
       "Former Clinical Fellow in Joint Replacement at Sant Parmanand Hospital.",

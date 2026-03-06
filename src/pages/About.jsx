@@ -7,7 +7,7 @@ import aboutPhoto from '../assets/aboutPhoto.jpeg';
 const About = () => {
   const stats = [
     { label: "Successful Surgeries", value: "5000+" },
-    { label: "Years of Experience", value: "20+" },
+    { label: "Years of Experience", value: "15+" },
     { label: "Patient Satisfaction", value: "99%" },
     { label: "International Patients", value: "200+" },
   ];
@@ -42,7 +42,7 @@ const About = () => {
                <div className="w-full h-full flex items-center justify-center text-blue-200 font-bold">Clinic Environment Photo</div>
             </div>
             <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-3xl shadow-2xl border border-slate-100">
-              <p className="text-4xl font-black text-blue-900">20+</p>
+              <p className="text-4xl font-black text-blue-900">15+</p>
               <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Years in Service</p>
             </div>
           </div>
