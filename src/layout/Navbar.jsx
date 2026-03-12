@@ -52,6 +52,7 @@ const Navbar = () => {
       }`}>
       
       {/* Upper Section */}
+<<<<<<< HEAD
 {/* Upper Section - Increased py-4 to py-8 for more vertical breathing room */}
 <div className="max-w-7xl mx-auto px-4 py-4 flex flex-row justify-between items-center gap-6">
   
@@ -72,6 +73,24 @@ const Navbar = () => {
         INFERTILITY CLINICS
       </h2>
     </div>
+=======
+      <div className="max-w-7xl mx-auto px-4  flex flex-row justify-between items-center gap-4">
+        <Link to="/" className="flex items-center gap-4 group">
+          <img
+            src={gadlogo}
+            alt="Logo"
+            className="h-20 md:h-28 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="flex flex-col">
+            <h1 className="text-sm md:text-2xl font-black text-blue-900 leading-none tracking-tight">
+              GAD ADVANCED ORTHO GYNAE &
+            </h1>
+            <h2 className="text-[10px] md:text-xl font-bold text-blue-700 leading-tight">
+              INFERTILITY CLINICS
+            </h2>
+          </div>
+        </Link>
+>>>>>>> main
 
     <img
       src={little_step_logo}
