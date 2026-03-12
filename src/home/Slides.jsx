@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Parvindar_photo from '../assets/Parvindar_photo.png';
 import Maam_photo from '../assets/Maam_photo.jpeg';
-import { Phone, Mail, MapPin, Award } from 'lucide-react';
+import { Stethoscope, MapPin, Award } from 'lucide-react';
 
 
 
@@ -40,8 +40,8 @@ export const Slides = [
                 <span>15+ Years of Surgical Excellence</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-4 text-slate-700 font-bold text-lg">
-                <div className="p-2 bg-blue-50 rounded-lg"><Phone className="text-blue-600" size={24} /></div>
-                <span>+91 98711 89004</span>
+                <div className="p-2 bg-blue-50 rounded-lg"><Stethoscope className="text-blue-600" size={24} /></div>
+                <span>Joint Replacement Surgeon</span>
               </div>
             </div>
           </div>

@@ -62,7 +62,7 @@ const BookAppointment = () => {
             </div>
             <div className="flex items-center gap-4">
               <div className="bg-white/10 p-2 rounded-lg"><Mail size={20}/></div>
-              <span className="text-sm font-bold">info@gadclinic.com</span>
+              <span className="text-sm font-bold">prvndr4@gmail.com</span>
             </div>
           </div>
         </div>

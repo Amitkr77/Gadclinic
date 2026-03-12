@@ -93,7 +93,7 @@ const Contact = () => {
             <div className="flex items-center gap-4 p-6 bg-blue-900 text-white rounded-3xl">
               <MapPin size={32} className="shrink-0 text-blue-300" />
               <p className="text-sm font-medium italic">
-                C4A 321A, Janak Puri, Near Janak Puri East Metro, New Delhi-110058
+              C5A, Dada Satram Mamtani Marg, C5B Block, Tihar Village, New Delhi, Delhi, 110057
               </p>
             </div>
           </div>

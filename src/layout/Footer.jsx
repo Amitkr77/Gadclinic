@@ -4,7 +4,8 @@ import {
   Phone, Mail, MapPin, Facebook, 
   Instagram, Twitter, Linkedin, ChevronRight 
 } from 'lucide-react';
-import gadlogo from '../assets/gadlogo.png';
+import joint_logo from '../assets/joint_logo.png';
+import little_step_logo from '../assets/little_step_logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,15 +39,25 @@ const Footer = () => {
             <span className="text-white font-black text-xl tracking-tighter">GADCLINIC</span>
           </Link> */}
 
-        <Link to="/" className="flex items-center gap-4">
+        <Link to="/" className="flex items-center gap-3 md:gap-4 shrink-0">
+          {/* Left Logo */}
           <img 
-            src={gadlogo} 
-            alt="GadLogo" 
-            className="h-20 w-auto object-contain scale-125" 
+            src={joint_logo} 
+            alt="Joint Logo" 
+            className="h-16 md:h-20 w-auto object-contain" 
           />
-          <span className="text-white font-black text-3xl tracking-tighter uppercase">
+
+          {/* Center Text */}
+          <span className="text-white font-black text-xl md:text-2xl tracking-tighter uppercase whitespace-nowrap">
             GADCLINIC
           </span>
+
+          {/* Right Logo */}
+          <img 
+            src={little_step_logo} 
+            alt="Little Steps Logo" 
+            className="h-12 md:h-16 w-auto object-contain" 
+          />
         </Link>
           <p className="text-sm leading-relaxed">
             Leading Orthopaedic, Gynaecology, and Infertility center in Delhi. 
@@ -103,7 +114,20 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-start gap-3">
               <MapPin className="text-blue-500 shrink-0" size={20} />
-              <p className="text-sm">C4A 321A, Janak Puri, New Delhi-110058</p>
+
+              {/* <p className="text-sm">C5A 321 A, Janak Puri, New Delhi-110058</p> */}
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("GAD ADVANCED ORTHO GYNAE & INFERTILITY CLINICS Janakpuri, New Delhi")}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition-colors duration-200"
+              >
+                <p className="text-sm">
+                  C5A 321 A, Janak Puri, New Delhi
+                </p>
+              </a>
+
+
             </div>
             <a href="tel:+919871189004" className="flex items-center gap-3 hover:text-red-500 transition-colors">
               <Phone className="text-blue-500 shrink-0" size={20} />
