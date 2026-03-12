@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Phone, MapPin, Mail, Menu, X, ChevronDown } from 'lucide-react';
+import { Phone, MapPin, Menu, X, ChevronDown } from 'lucide-react';
 import joint_logo from '../assets/joint_logo.png';
 import little_step_logo from '../assets/little_step_logo.png';
 
@@ -47,102 +47,79 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`w-full bg-white fixed top-0 z-100 shadow-sm transition-transform duration-300 ${
+    <header className={`w-full bg-white fixed top-0 z-[100] shadow-sm transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
       
       {/* Upper Section */}
-<<<<<<< HEAD
-{/* Upper Section - Increased py-4 to py-8 for more vertical breathing room */}
-<div className="max-w-7xl mx-auto px-4 py-4 flex flex-row justify-between items-center gap-6">
-  
-  {/* Logo & Brand Section */}
-  <Link to="/" className="flex items-center gap-4 group shrink-0">
-    <img
-      src={joint_logo}
-      alt="Logo"
-      /* Increased height from h-12 to h-16 (mobile) and h-16 to h-24 (desktop) */
-      className="h-16 md:h-24 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0"
-    />
-    
-    <div className="hidden sm:flex flex-col pl-4 md:pl-6">
-      <h1 className="text-sm md:text-2xl font-black text-blue-900 leading-none tracking-tight whitespace-nowrap">
-        GAD ADVANCED ORTHO GYNAE &
-      </h1>
-      <h2 className="text-[10px] md:text-xl font-bold text-blue-700 leading-tight whitespace-nowrap">
-        INFERTILITY CLINICS
-      </h2>
-    </div>
-=======
-      <div className="max-w-7xl mx-auto px-4  flex flex-row justify-between items-center gap-4">
-        <Link to="/" className="flex items-center gap-4 group">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex flex-row justify-between items-center gap-6">
+        
+        {/* Logo & Brand Section */}
+        <Link to="/" className="flex items-center gap-4 group shrink-0">
           <img
-            src={gadlogo}
-            alt="Logo"
-            className="h-20 md:h-28 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+            src={joint_logo}
+            alt="Joint Clinic Logo"
+            className="h-16 md:h-24 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0"
           />
-          <div className="flex flex-col">
-            <h1 className="text-sm md:text-2xl font-black text-blue-900 leading-none tracking-tight">
+          
+          <div className="hidden sm:flex flex-col pl-4 md:pl-6">
+            <h1 className="text-sm md:text-2xl font-black text-blue-900 leading-none tracking-tight whitespace-nowrap">
               GAD ADVANCED ORTHO GYNAE &
             </h1>
-            <h2 className="text-[10px] md:text-xl font-bold text-blue-700 leading-tight">
+            <h2 className="text-[10px] md:text-xl font-bold text-blue-700 leading-tight whitespace-nowrap">
               INFERTILITY CLINICS
             </h2>
           </div>
+
+          <img
+            src={little_step_logo}
+            alt="Little Steps Logo"
+            className="h-16 md:h-24 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0"
+          />
         </Link>
->>>>>>> main
 
-    <img
-      src={little_step_logo}
-      alt="Logo"
-      /* Increased height to match the first logo */
-      className="h-16 md:h-24 w-auto object-contain mix-blend-multiply filter drop-shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0"
-    />
-  </Link>
+        {/* Desktop Contacts */}
+        <div className="hidden lg:flex items-center gap-10">
+          <a 
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("GAD ADVANCED ORTHO GYNAE & INFERTILITY CLINICS, Janak Puri, New Delhi")}`}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4"
+          >
+            <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
+              <MapPin className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Address</p>
+              <p className="text-sm md:text-base font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                Janak Puri, New Delhi
+              </p>
+            </div>
+          </a>
+          
+          <a href="tel:+919871189004" className="group flex items-center gap-4">
+             <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
+               <Phone className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
+             </div>
+             <div>
+               <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Call Us</p>
+               <p className="text-sm md:text-base font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                 +91 9871189004
+               </p>
+             </div>
+          </a>
+        </div>
 
-  {/* Desktop Contacts - Adjusted gap for the larger height */}
-  <div className="hidden lg:flex items-center gap-10">
-    <a 
-      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("GAD ADVANCED ORTHO GYNAE & INFERTILITY CLINICS, Janak Puri, New Delhi")}`}
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="group flex items-center gap-4"
-    >
-      <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
-        <MapPin className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
+        {/* MOBILE TOGGLE BUTTON */}
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden p-3 text-blue-900 hover:bg-gray-100 rounded-full transition-colors"
+        >
+          {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+        </button>
       </div>
-      <div>
-        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Address</p>
 
-        <p className="text-sm md:text-base font-semibold text-gray-800">
-          Janak Puri, New Delhi
-        </p>
-      </div>
-    </a>
-    
-    <a href="tel:+919871189004" className="flex items-center gap-4 group">
-       <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
-         <Phone className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
-       </div>
-       <div>
-         <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Call Us</p>
-         <p className="text-sm md:text-base font-semibold text-gray-800">+91 9871189004</p>
-       </div>
-    </a>
-  </div>
-
-  {/* MOBILE TOGGLE BUTTON */}
-  <button 
-    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-    className="lg:hidden p-3 text-blue-900 hover:bg-gray-100 rounded-full transition-colors"
-  >
-    {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
-  </button>
-</div>
-
-      
-
-      {/* DESKTOP LOWER SECTION (Hidden on Mobile) */}
+      {/* DESKTOP LOWER SECTION */}
       <div className="hidden lg:block bg-blue-900">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-14">
           <div className="flex space-x-8">
@@ -207,7 +184,6 @@ const Navbar = () => {
                 )}
               </div>
               
-              {/* Mobile Dropdown Items */}
               {link.dropdown && mobileTreatmentsOpen && (
                 <div className="bg-blue-950/50 rounded-lg pl-4 mb-2">
                   {link.dropdown.map((sub) => (
@@ -224,7 +200,6 @@ const Navbar = () => {
               )}
             </div>
           ))}
-          
           <Link 
             to="/book-appointment" 
             onClick={() => setIsMobileMenuOpen(false)}
