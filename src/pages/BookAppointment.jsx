@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, User, Calendar, MessageSquare, Globe } from 'lucide-react';
+import { Phone, Mail, User, Calendar, Clock, Globe } from 'lucide-react';
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
@@ -8,9 +8,32 @@ const BookAppointment = () => {
     countryCode: '+91',
     email: '',
     service: 'Knee Replacement',
+    date: '',
+    timeSlot: '',
     message: ''
   });
 
+
+
+  const getAvailableSlots = (dateString) => {
+  if (!dateString) return [];
+
+  const date = new Date(dateString);
+  const day = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+  if (day === 0) {
+    // Sunday Slots
+    return [
+      { label: "Morning: 11:00 AM - 01:00 PM", value: "11:00 AM - 01:00 PM" }
+    ];
+  } else {
+    // Monday to Saturday Slots
+    return [
+      { label: "Morning: 11:30 AM - 01:00 PM", value: "11:30 AM - 01:00 PM" },
+      { label: "Evening: 05:30 PM - 08:30 PM", value: "05:30 PM - 08:30 PM" }
+    ];
+  }
+};
 
 
   const handleSubmit = (e) => {
@@ -24,6 +47,8 @@ const BookAppointment = () => {
                     `*Phone:* ${formData.countryCode} ${formData.mobile}%0a` +
                     `*Email:* ${formData.email}%0a` +
                     `*Service:* ${formData.service}%0a` +
+                    `*Date:* ${formData.date}%0a` +
+                    `*Time:* ${formData.timeSlot}%0a` +
                     `*Condition:* ${formData.message || 'Not specified'}`;
 
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
@@ -35,12 +60,16 @@ const BookAppointment = () => {
       countryCode: '+91',
       email: '',
       service: 'Knee Replacement',
+      date: '',
+      timeSlot: '',
       message: ''
     });
 
     
     alert("Opening WhatsApp... Thank you for reaching out!");
   };
+
+
 
   return (
     <div className="min-h-screen bg-slate-50 pt-32 md:pt-60 pb-20 px-6">
@@ -141,6 +170,53 @@ const BookAppointment = () => {
                 <option>IVF Treatment</option>
                 <option>Hip Replacement</option>
               </select>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Date Selection */}
+              <div>
+                <label className="text-xs font-black text-blue-900 uppercase mb-2 block">
+                  Select Date
+                </label>
+                <div className="relative">
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                  <input 
+                    type="date" 
+                    required
+                    value={formData.date}
+                    onKeyDown={(e) => e.preventDefault()} 
+                    min={new Date().toISOString().split('T')[0]} 
+                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none cursor-pointer"
+                    onChange={(e) => setFormData({...formData, date: e.target.value, timeSlot: ''})}
+                  />
+                </div>
+              </div>
+
+              {/* Dynamic Time Slot Selection */}
+              <div>
+                <label className="text-xs font-black text-blue-900 uppercase mb-2 block">
+                  Available Time Slots
+                </label>
+                <div className="relative">
+                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                  <select 
+                    required
+                    disabled={!formData.date}
+                    value={formData.timeSlot}
+                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none disabled:opacity-50"
+                    onChange={(e) => setFormData({...formData, timeSlot: e.target.value})}
+                  >
+                    <option value="">
+                      {!formData.date ? "Choose date first" : "Select a slot"}
+                    </option>
+                    {getAvailableSlots(formData.date).map((slot, index) => (
+                      <option key={index} value={slot.value}>
+                        {slot.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div>
 
             {/* Message */}
